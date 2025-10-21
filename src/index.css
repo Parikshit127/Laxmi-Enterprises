@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    .prose {
+        @apply text-brand-gray;
+    }
+    .prose h1, .prose h2, .prose h3 {
+        @apply text-brand-primary-dark;
+    }
+    .prose a {
+        @apply text-brand-primary hover:text-brand-primary-dark;
+    }
+    .prose ul > li::before {
+        @apply bg-brand-gray;
+    }
+}
+
+@layer components {
+  .cta-button-primary {
+    @apply bg-brand-secondary-dark hover:bg-brand-secondary-dark/90 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg;
+  }
+  .cta-button-secondary {
+    @apply bg-transparent border-2 border-brand-primary hover:bg-brand-primary hover:text-white text-brand-primary font-bold py-3 px-6 rounded-lg transition-all duration-300;
+  }
+  .form-label { 
+    @apply block text-sm font-medium text-brand-gray-dark mb-1; 
+  }
+  .form-input { 
+    @apply block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary sm:text-sm transition-colors; 
+  }
+  .form-error { 
+    @apply mt-1 text-sm text-red-600; 
+  }
+}
