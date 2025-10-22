@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
     <div className="relative bg-brand-primary-dark pt-20 pb-24 sm:pt-28 sm:pb-32 lg:pt-32 lg:pb-40">
       <div className="absolute inset-0 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1580252172424-b551858883b9?q=80&w=2070&auto=format&fit=crop"
+          src="/gabriel-santos-GBVDilE8yvI-unsplash copy.jpg"
           alt="Commercial trucks on a highway"
           className="w-full h-full object-cover opacity-20"
         />

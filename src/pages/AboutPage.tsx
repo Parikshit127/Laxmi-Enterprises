@@ -10,7 +10,7 @@ const AboutPage: React.FC = () => {
         <div className="relative bg-brand-primary-dark text-white py-24 sm:py-32">
             <div className="absolute inset-0 overflow-hidden">
                 <img
-                    src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?q=80&w=2070&auto=format&fit=crop"
+                    src="/scott-graham-5fNmWej4tAA-unsplash.jpg"
                     alt="Business meeting"
                     className="w-full h-full object-cover opacity-20"
                 />
@@ -38,7 +38,7 @@ const AboutPage: React.FC = () => {
               </p>
             </div>
             <div className="rounded-lg overflow-hidden shadow-2xl">
-              <img src="https://images.unsplash.com/photo-1600880292203-9def987c0859?q=80&w=1887&auto=format&fit=crop" alt="Team collaborating" className="w-full h-full object-cover" />
+              <img src="/dylan-gillis-KdeqA3aTnBY-unsplash.jpg" alt="Team collaborating" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>

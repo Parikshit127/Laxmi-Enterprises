@@ -1,9 +1,9 @@
 import { BarChart, Building, Car, Cog, Handshake, ShieldCheck } from 'lucide-react';
 
 export const CONTACT_INFO = {
-    phone: '+91 8569942414',
-    phone_raw: '918569942414',
-    email: 'parikshitkaushal0712@gmail.com',
+    phone: '+91 8818004778',
+    phone_raw: '918818004778',
+    email: 'LaxmiEnterprise@gmail.com',
     address: 'Near D-Park, Rothak, Haryana, 124001, India',
 };
 

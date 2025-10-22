@@ -13,6 +13,11 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex-shrink-0 flex items-center space-x-2">
+            <img
+            src="/logolmx.png"
+            alt="Laxmi Enterprises Logo"
+            className="h-10 w-auto"
+            />
             <span className="text-2xl font-extrabold text-brand-primary-dark">Laxmi Enterprises</span>
           </Link>
 

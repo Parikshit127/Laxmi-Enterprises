@@ -20,25 +20,34 @@ const ContactPage: React.FC = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
 
-    const onSubmit: SubmitHandler<FormInputs> = async (data) => {
-        setIsSubmitting(true);
-        setSubmitStatus(null);
-        console.log("Form Data:", data);
+    // inside ContactPage component (only the onSubmit part shown)
+const onSubmit: SubmitHandler<FormInputs> = async (data) => {
+  setIsSubmitting(true);
+  setSubmitStatus(null);
+  try {
+    const resp = await fetch('/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
 
-        // TODO: Replace with actual API call to save lead and send email.
-        
-        // This is a mock submission to demonstrate functionality.
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        // Randomly succeed or fail for demonstration purposes.
-        if (Math.random() > 0.1) {
-            setSubmitStatus('success');
-            reset();
-        } else {
-            setSubmitStatus('error');
-        }
-        setIsSubmitting(false);
-    };
+    if (!resp.ok) {
+      console.error(await resp.text());
+      setSubmitStatus('error');
+      return;
+    }
+
+    setSubmitStatus('success');
+    reset();
+  } catch (err) {
+    console.error(err);
+    setSubmitStatus('error');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
+
 
     return (
         <PageWrapper>
