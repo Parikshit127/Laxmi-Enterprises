@@ -5,7 +5,7 @@ export const CONTACT_INFO = {
     phone_raw: '918818004778',
     email: 'LaxmiEnterprise@gmail.com',
     address: 'Near D-Park, Rothak, Haryana, 124001, India',
-    whatsapp: '918569942414',
+    whatsapp: '918818004778',
 };
 
 export const WHATSAPP_LINK = `https://wa.me/${CONTACT_INFO.phone_raw}?text=Hello%20Laxmi%20Enterprises%2C%20I%20want%20a%20commercial%20vehicle%20loan.`;
