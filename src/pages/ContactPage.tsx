@@ -24,21 +24,50 @@ const ContactPage: React.FC = () => {
 const onSubmit: SubmitHandler<FormInputs> = async (data) => {
   setIsSubmitting(true);
   setSubmitStatus(null);
+
   try {
-    const resp = await fetch('/api/leads', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
+    // Build a human-friendly message from the form data
+    const messageLines = [
+      `Hello Laxmi Enterprises,`,
+      `I would like to apply for a loan.`,
+      ``,
+      `Name: ${data.name || '-'}`,
+      `Phone: ${data.phone || '-'}`,
+      `Email: ${data.email || '-'}`,
+      `City: ${data.city || '-'}`,
+      `Loan Type: ${data.loan_type || '-'}`,
+      `Budget: ${data.budget ? `₹${data.budget}` : '-'}`,
+      `Details: ${data.details || '-'}`,
+      `Preferred Bank: ${data.preferred_bank || '-'}`,
+      ``,
+      `Please contact me.`,
+    ];
 
-    if (!resp.ok) {
-      console.error(await resp.text());
+    const message = encodeURIComponent(messageLines.join('\n'));
+
+    // Prefer CONTACT_INFO.whatsapp if available; otherwise, fall back to WHATSAPP_LINK
+    const phoneNumber = (CONTACT_INFO && CONTACT_INFO.whatsapp) ? CONTACT_INFO.whatsapp : null;
+
+    if (phoneNumber) {
+      const waLink = `https://wa.me/${phoneNumber}?text=${message}`;
+      // Open WhatsApp (new tab)
+      window.open(waLink, '_blank', 'noopener,noreferrer');
+
+      setSubmitStatus('success');
+      reset();
+    } else if (WHATSAPP_LINK) {
+      // If WHATSAPP_LINK is already a full link, try to append text if it doesn't already have ?text=
+      const separator = WHATSAPP_LINK.includes('?') ? '&' : '?';
+      const waLink = WHATSAPP_LINK.includes('text=') ? WHATSAPP_LINK : `${WHATSAPP_LINK}${separator}text=${message}`;
+      window.open(waLink, '_blank', 'noopener,noreferrer');
+
+      setSubmitStatus('success');
+      reset();
+    } else {
+      // No WA destination configured
+      console.error('WhatsApp number or link is not configured in constants.');
       setSubmitStatus('error');
-      return;
     }
-
-    setSubmitStatus('success');
-    reset();
   } catch (err) {
     console.error(err);
     setSubmitStatus('error');
@@ -46,6 +75,7 @@ const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     setIsSubmitting(false);
   }
 };
+
 
 
 
